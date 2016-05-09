@@ -25,19 +25,22 @@
 		 */
 		private function enqueues(){
 
+			/**
+			 * Below are just some examples
+			 */
 			add_action( 'init', function(){
 
 				//javascript files loaded in the frond-end:
-				$url = Url::plugin( 'crouton', true ).'Assets/js/';
+				//$url = Url::plugin( 'crouton', true ).'Assets/js/';
 
 				// id - url (without .js) - autoload
-				Script::register( 'crouton-script', $url.'Frontend', false );
+				//Script::register( 'crouton-script', $url.'Frontend', false );
 
 				//sass files loaded in the front-end:
-				$url = 'crouton/Assets/sass/';
+				//$url = 'crouton/Assets/sass/';
 				
 				// id - url (without .scss ) - force-overwrite
-				Sass::register( 'template', $url.'_template', false );
+				//Sass::register( 'template', $url.'_template', false );
 			
 			});
 		}
