@@ -27,7 +27,7 @@
 		private function metaboxes(){
 
 			$fields = $this->getFields();
-			Metabox::make( 'A Metabox', 'post' )->set( $fields );
+			Metabox::make( 'A Metabox', array( 'post', 'page', 'project' ) )->set( $fields );
 
 		}
 
