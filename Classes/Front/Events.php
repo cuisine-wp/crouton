@@ -1,23 +1,13 @@
 <?php
 
-	namespace Crouton\Frontend;
+	namespace Crouton\Front;
 
 	use \Cuisine\Utilities\Url;
 	use \Cuisine\Wrappers\Route;
 	use \Cuisine\Wrappers\PostType;
-	use \Crouton\Wrappers\StaticInstance;
+	use \Crouton\Contracts\EventListener;
 
-	class EventListeners extends StaticInstance{
-
-
-		/**
-		 * Init events & vars
-		 */
-		function __construct(){
-
-			$this->listen();
-
-		}
+	class Events extends EventListener{
 
 
 		/**
@@ -25,7 +15,7 @@
 		 * 
 		 * @return void
 		 */
-		private function listen(){
+		public function listen(){
 
 			/**
 			 * Below are just some examples
@@ -54,9 +44,4 @@
 
 			});
 		}
-
-
-
 	}
-
-	\Crouton\Frontend\EventListeners::getInstance();

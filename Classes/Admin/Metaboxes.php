@@ -4,19 +4,9 @@
 
 	use \Cuisine\Wrappers\Metabox;
 	use \Cuisine\Wrappers\Field;
-	use \Crouton\Wrappers\StaticInstance;
+	use \Crouton\Contracts\EventListener;
 
-	class MetaboxListeners extends StaticInstance{
-
-
-		/**
-		 * Init admin metaboxes
-		 */
-		function __construct(){
-
-			$this->metaboxes();
-
-		}
+	class Metaboxes extends EventListener{
 
 
 		/**
@@ -24,7 +14,7 @@
 		 * 
 		 * @return void
 		 */
-		private function metaboxes(){
+		public function listen(){
 
 			$fields = $this->getFields();
 			Metabox::make( 'A Metabox', array( 'post', 'page', 'project' ) )->set( $fields );
@@ -36,7 +26,7 @@
 		 * 
 		 * @return array
 		 */
-		private function getFields(){
+		protected function getFields(){
 
 			return array(
 
@@ -52,10 +42,4 @@
 			);
 
 		}
-		
-
-
 	}
-
-	if( is_admin() )
-		\Crouton\Admin\MetaboxListeners::getInstance();

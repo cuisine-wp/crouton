@@ -25,14 +25,14 @@ defined('DS') ? DS : define('DS', DIRECTORY_SEPARATOR);
 /**
  * Main class that bootstraps the plugin.
  */
-if (!class_exists('CroutonIgniter')) {
+if (!class_exists('PluginIgniter')) {
 
-    class CroutonIgniter {
+    class PluginIgniter {
     
         /**
          * Plugin bootstrap instance.
          *
-         * @var \Crouton\CroutonIgniter
+         * @var \Crouton\PluginIgniter
          */
         private static $instance = null;
 
@@ -68,24 +68,15 @@ if (!class_exists('CroutonIgniter')) {
          */
         private function load(){
 
-            //auto-loads all .php files in these directories.
-            $includes = array( 
-                'Classes/Wrappers',      //facades
-                'Classes/Admin',
-                'Classes/Front'
-            );
+            //require the language domain:
+            $path = __DIR__ . DS . '/Languages/';
+            load_plugin_textdomain( 'crouton', false, $path );
 
-            foreach( $includes as $inc ){
-                
-                $root = static::getPluginPath();
-                $files = glob( $root.$inc.'/*.php' );
+            //require the autoloader:
+            require( __DIR__ . DS . 'autoloader.php');
 
-                foreach ( $files as $file ){
-
-                    require_once( $file );
-
-                }
-            }
+            //initiate the autoloader:
+            ( new \Crouton\Autoloader() )->register()->load();
 
             //give off the loaded hook
             do_action( 'crouton_loaded' );
@@ -100,7 +91,7 @@ if (!class_exists('CroutonIgniter')) {
         /**
          * Init the plugin classes
          *
-         * @return \Crouton\CroutonIgniter
+         * @return \Crouton\PluginIgniter
          */
         public static function getInstance(){
 
@@ -140,7 +131,6 @@ if (!class_exists('CroutonIgniter')) {
             // Check if in the 'mu-plugins' directory.
             if (WPMU_PLUGIN_DIR === $path) {
                 return 'mu-plugins';
-
             }
 
             // Install as a classic plugin.
@@ -177,7 +167,7 @@ if (!class_exists('CroutonIgniter')) {
  */
 add_action('cuisine_loaded', function(){
 
-	\Crouton\CroutonIgniter::getInstance();
+	\Crouton\PluginIgniter::getInstance();
 
 });
 

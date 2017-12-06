@@ -3,25 +3,16 @@
 	namespace Crouton\Admin;
 
 	use \Cuisine\Utilities\Url;
-	use \Crouton\Wrappers\StaticInstance;
+	use \Crouton\Contracts\AssetLoader;
 
-	class Assets extends StaticInstance{
-
-		/**
-		 * Init admin events & vars
-		 */
-		function __construct(){
-
-			$this->enqueues();
-
-		}
+	class Assets extends AssetLoader{
 
 		/**
 		 * Enqueue scripts & Styles
 		 * 
 		 * @return void
 		 */
-		private function enqueues(){
+		public function load(){
 
 			/**
 			 * Below are just some examples
@@ -38,10 +29,4 @@
 				
 			});
 		}
-
-
-
 	}
-
-	if( is_admin() )
-		\Crouton\Admin\Assets::getInstance();

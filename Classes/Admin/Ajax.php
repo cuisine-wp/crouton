@@ -2,26 +2,17 @@
 
 	namespace Crouton\Admin;
 
-	use \stdClass;
-	use \Crouton\Wrappers\AjaxInstance;
+	use \Crouton\Contracts\AjaxListener;
 
-	class Ajax extends AjaxInstance{
+	class Ajax extends AjaxListener{
 
-		/**
-		 * Init admin ajax events:
-		 */
-		function __construct(){
-
-			$this->listen();
-
-		}
 
 		/**
 		 * All backend-ajax events for this plugin
 		 * 
 		 * @return string, echoed
 		 */
-		private function listen(){
+		public function listen(){
 
 
 			/**
@@ -37,7 +28,3 @@
 			});*/
 		}
 	}
-
-
-	if( is_admin() )
-		\Crouton\Admin\Ajax::getInstance();
