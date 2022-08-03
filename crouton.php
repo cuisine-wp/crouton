@@ -3,7 +3,7 @@
  * Plugin Name: Crouton
  * Plugin URI: http://chefduweb.nl/cuisine
  * Description: Starting canvas for Cuisine plugins
- * Version: 1.2
+ * Version: 1.2.1
  * Author: Luc Princen
  * Author URI: http://www.chefduweb.nl/
  * License: GPLv2
